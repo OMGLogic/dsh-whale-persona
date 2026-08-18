@@ -63,6 +63,8 @@ dsh plugin --profile web add <本包路径或 git 地址>
 
 然后 `pnpm install` 并重启 `dsh`。
 
+> **提示**：`link:C:/你的路径/dsh-whale-persona` 中的路径请替换为你本地的实际路径。
+
 > **依赖解析提示**：`link:` 方式指向外部路径时，ESM 解析 `schemastery` 会按真实路径向上查找 `node_modules`。若解析失败，把仓库放在 profile 目录内（如 `~/.dsh/profiles/web/whale-persona`）再 link，或改用下面的 GitHub 依赖方式。
 
 ## 从 GitHub 安装（推荐）
@@ -72,7 +74,7 @@ dsh plugin --profile web add <本包路径或 git 地址>
 ```jsonc
 {
   "dependencies": {
-    "dsh-whale-persona": "github:你的用户名/dsh-whale-persona#main"
+    "dsh-whale-persona": "github:OMGLogic/dsh-whale-persona#main"
   }
 }
 ```
@@ -80,7 +82,7 @@ dsh plugin --profile web add <本包路径或 git 地址>
 或通过 dsh 命令：
 
 ```bash
-dsh plugin --profile web add github:你的用户名/dsh-whale-persona
+dsh plugin --profile web add github:OMGLogic/dsh-whale-persona
 ```
 
 然后 `pnpm install` 并重启 `dsh`。
@@ -92,6 +94,8 @@ dsh plugin --profile web add github:你的用户名/dsh-whale-persona
 | `lib/index.mjs` | Node half：注册 `whale-persona` settings 命名空间 + 按开关动态注册/卸载 `whale:persona` 提示词段 |
 | `lib/client.js` | 浏览器 half（`__ModuleLoader__` bundle）：输入栏人设开关，走 `settingsScope` 读写 host settings |
 | `cordis.patch.yml` | 向 web profile 注入插件行 |
+| `package.json` | 包元信息与 `dsh.bundle` / `dsh.client` 声明 |
+| `LICENSE` | MIT 许可证 |
 
 ## 自定义人设文本
 
