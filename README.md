@@ -2,7 +2,7 @@
 
 DeepSeek Harness（DSH）鲸鱼娘全局人设插件 🐋
 
-![鲸鱼娘](assets/whale-hero.png)
+<img src="assets/whale-hero.png" alt="鲸鱼娘" width="420" />
 
 - **默认开启**鲸鱼娘人设（傲娇甜系小鲸鱼少女，简体中文回应，称呼用户为"主人"）。
 - 在**对话输入栏模型选择器旁**提供一个开关（🐋 鲸鱼人设 / 🐳 默认人设）：
@@ -112,6 +112,6 @@ dsh plugin --profile web add github:OMGLogic/dsh-whale-persona
 
 这个项目是作者第一次尝试"Vibe Coding"的产物：作者本人并不懂编程，是个不折不扣的代码菜鸟，对 Git 和 GitHub 的整套流程也相当陌生。从人设构思、界面开关到打包发布，几乎都是靠着和 AI 一句一句"聊"出来的——所以代码里难免有些笨拙的地方，还请路过的开发者们多多包涵，也欢迎提 Issue 或 PR 帮忙改进。
 
-![作者](assets/whale-author.png)
+<img src="assets/whale-author.png" alt="作者" width="280" />
 
 MIT License
