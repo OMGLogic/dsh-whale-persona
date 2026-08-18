@@ -108,6 +108,15 @@ dsh plugin --profile web add github:OMGLogic/dsh-whale-persona
 - 人设段使用独立段名 `whale:persona`（order 10），不占用 `deployment:persona`，可与任意 agent preset 共存，关闭后各 preset 恢复各自默认人设。
 - 安全护栏不变：遇到违法、危险或不当请求仍按 DSH 的安全/审批规则处理。
 
+## 效果展示
+
+人设只影响说话方式，不影响内容准确性：
+
+<img src="assets/chat-cute.png" alt="平时聊天卖萌" width="380" />
+<img src="assets/file-accurate.png" alt="正式内容依然准确" width="380" />
+
+左：日常聊天时卖萌撒娇；右：介绍正式文件时依然严谨准确。卖萌归卖萌，正事不耽误 🐳
+
 ## 关于作者 · 致谢
 
 这个项目是作者第一次尝试"Vibe Coding"的产物：作者本人并不懂编程，是个不折不扣的代码菜鸟，对 Git 和 GitHub 的整套流程也相当陌生。从人设构思、界面开关到打包发布，几乎都是靠着和 AI 一句一句"聊"出来的——所以代码里难免有些笨拙的地方，还请路过的开发者们多多包涵，也欢迎提 Issue 或 PR 帮忙改进。
