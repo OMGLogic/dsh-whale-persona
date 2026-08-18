@@ -1,0 +1,38 @@
+{
+  "name": "dsh-whale-persona",
+  "version": "0.1.0",
+  "description": "DeepSeek 鲸鱼娘全局人设插件：默认开启鲸鱼娘人设，对话输入栏模型选择器旁提供开关，关闭时恢复默认人设。",
+  "type": "module",
+  "main": "lib/index.mjs",
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "exports": {
+    ".": "./lib/index.mjs",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "dependencies": {
+    "schemastery": "^3.18.0"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "persona",
+    "whale"
+  ],
+  "license": "MIT"
+}

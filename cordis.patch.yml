@@ -1,0 +1,6 @@
+# dsh-whale-persona bundle patch：向 web profile 注入人设插件行。
+# Node half（lib/index.mjs）注册全局鲸鱼娘人设段 + settings 命名空间；
+# client half（lib/client.js）由 __ModuleLoader__ 挂载对话输入栏开关。
+- insert:
+    - id: whale-persona
+      name: 'dsh-whale-persona'
