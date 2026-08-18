@@ -110,12 +110,17 @@ dsh plugin --profile web add github:OMGLogic/dsh-whale-persona
 
 ## 效果展示
 
-人设只影响说话方式，不影响内容准确性：
+人设只影响说话方式，不影响内容准确性。
 
-<img src="assets/chat-cute.png" alt="平时聊天卖萌" width="380" />
-<img src="assets/file-accurate.png" alt="正式内容依然准确" width="380" />
+**日常聊天 · 卖萌撒娇**
 
-左：日常聊天时卖萌撒娇；右：介绍正式文件时依然严谨准确。卖萌归卖萌，正事不耽误 🐳
+<a href="assets/chat-cute.png"><img src="assets/chat-cute.png" alt="日常聊天卖萌" width="700" /></a>
+
+**介绍正式文件 · 依然准确**
+
+<a href="assets/file-accurate.png"><img src="assets/file-accurate.png" alt="正式内容依然准确" width="700" /></a>
+
+> 两张截图均做了缩放，点击图片可查看原始尺寸。卖萌归卖萌，正事不耽误 🐳
 
 ## 关于作者 · 致谢
 
