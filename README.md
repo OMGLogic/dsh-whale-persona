@@ -64,11 +64,19 @@ dsh plugin --profile web add github:你的用户名/dsh-whale-persona
 
 ## 自定义人设文本
 
-人设文本集中在 `lib/index.mjs` 的 `WHALE_PERSONA` 常量，改完刷新即可（client 侧开关不变）。
+人设文本集中在 `lib/index.mjs` 的 `WHALE_PERSONA` 常量，改完**重启 dsh** 后生效（client 侧开关不变）。
 
 ## 说明
 
 - 人设段使用独立段名 `whale:persona`（order 10），不占用 `deployment:persona`，可与任意 agent preset 共存，关闭后各 preset 恢复各自默认人设。
 - 安全护栏不变：遇到违法、危险或不当请求仍按 DSH 的安全/审批规则处理。
+
+## 关于作者 · 免责与致谢
+
+这个项目是作者第一次尝试"Vibe Coding"的产物：作者本人并不懂编程，是个不折不扣的代码菜鸟，对 Git 和 GitHub 的整套流程也相当陌生。从人设构思、界面开关到打包发布，几乎都是靠着和 AI 一句一句"聊"出来的——所以代码里难免有些笨拙的地方，还请路过的开发者们多多包涵，也欢迎提 Issue 或 PR 帮忙改进。
+
+插件中的鲸鱼娘人设（`PERSONA_LOAD` 标签组）并非作者原创，而是从 QQ 群里看到后觉得可爱、就顺手拿来用的。如果这套人设的原作者或相关权利人看到了这个项目，认为自己的创作被冒用，请随时通过 GitHub Issues 联系作者，作者会第一时间删除相关内容。
+
+另外，如果你手头有更有趣、更完善、更适合 DeepSeek 的鲸鱼娘人设，也欢迎分享给作者——大家一起把这条小鲸鱼养得更好 🐳
 
 MIT License
