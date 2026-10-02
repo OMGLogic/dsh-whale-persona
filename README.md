@@ -2,13 +2,20 @@
 
 DeepSeek Harness（DSH）鲸鱼娘全局人设插件 🐋
 
+> **兼容性**：`0.2.0` 起适配 **DSH `0.2.0-rc.2`**。
+> `0.1.0` 使用的 `ctx.settings.register`（host）与 `ctx.settingsScope`（client）
+> 在 0.2.0-rc.2 中已不存在，会在启动时报错：
+> `ctx.settings.register is not a function` 与 `pending (waiting for service: settingsScope)`。
+> 若你在旧版 DSH 上使用，请装 `0.1.0`；升级到 `0.2.0-rc.2` 后请用 `0.2.0`。
+> `0.2.0` 同时把插件行 id / 插件名与包名统一为 `dsh-whale-persona`（`0.1.0` 为 `whale-persona`）。
+
 <img src="assets/whale-hero.png" alt="鲸鱼娘" width="420" />
 
 - **默认开启**鲸鱼娘人设（傲娇甜系小鲸鱼少女，简体中文回应，称呼用户为"主人"）。
 - 在**对话输入栏模型选择器旁**提供一个开关（🐋 鲸鱼人设 / 🐳 默认人设）：
   - 开启：向所有会话注入鲸鱼娘人设提示词段；
   - 关闭：卸载人设段，各会话恢复各自 preset 的默认人设。
-- 开关状态持久化在用户 settings（`whale-persona.enabled`），无需重启即时生效。
+- 开关状态持久化在 profile patch（`dsh-whale-persona.enabled`，volatile 字段），无需重启即时生效。
 
 ## 人设原文
 
@@ -67,7 +74,7 @@ dsh plugin --profile web add <本包路径或 git 地址>
 
 > **提示**：`link:C:/你的路径/dsh-whale-persona` 中的路径请替换为你本地的实际路径。
 
-> **依赖解析提示**：`link:` 方式指向外部路径时，ESM 解析 `schemastery` 会按真实路径向上查找 `node_modules`。若解析失败，把仓库放在 profile 目录内（如 `~/.dsh/profiles/web/whale-persona`）再 link，或改用下面的 GitHub 依赖方式。
+> **依赖解析提示**：`link:` 方式指向外部路径时，ESM 解析 `@deepseek-ai/schemastery` 会按真实路径向上查找 `node_modules`。若解析失败，把仓库放在 profile 目录内（如 `~/.dsh/profiles/web/dsh-whale-persona`）再 link，或改用下面的 GitHub 依赖方式。
 
 ## 从 GitHub 安装（推荐）
 
@@ -93,8 +100,8 @@ dsh plugin --profile web add github:OMGLogic/dsh-whale-persona
 
 | 文件 | 说明 |
 | --- | --- |
-| `lib/index.mjs` | Node half：注册 `whale-persona` settings 命名空间 + 按开关动态注册/卸载 `whale:persona` 提示词段 |
-| `lib/client.js` | 浏览器 half（`__ModuleLoader__` bundle）：输入栏人设开关，走 `settingsScope` 读写 host settings |
+| `lib/index.mjs` | Node half：声明 volatile 配置字段 `enabled` + 按开关提供 `whale:persona` 提示词段 |
+| `lib/client.js` | 浏览器 half（`__ModuleLoader__` bundle）：输入栏人设开关，走 `ctx.configForms` 读写 host 配置 |
 | `cordis.patch.yml` | 向 web profile 注入插件行 |
 | `package.json` | 包元信息与 `dsh.bundle` / `dsh.client` 声明 |
 | `LICENSE` | MIT 许可证 |
