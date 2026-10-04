@@ -1,6 +1,8 @@
 # dsh-whale-persona bundle patch：向 profile 注入人设插件行。
-# Node half（lib/index.mjs）注册全局鲸鱼娘人设段 + 开关 Config（volatile `enabled`）；
-# client half（lib/client.js）由 __ModuleLoader__ 挂载对话输入栏开关。
+# Node half（lib/index.mjs）注册全局鲸鱼娘人设段 + Config（volatile `enabled` 开关与
+# volatile `persona` 人设正文，默认值即内置默认人设）；
+# client half（lib/client.js）由 __ModuleLoader__ 挂载对话输入栏开关，
+# 以及设置里用来编辑人设正文的一页。
 # 下面 insert 的 id 就是 host 侧配置命名空间，client half 以它调用 configForms.get()，
 # 两边必须一致；改动前请同步 lib/client.js 的 NAMESPACE。
 - insert:

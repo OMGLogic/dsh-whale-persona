@@ -2,6 +2,29 @@
 
 本文件记录 dsh-whale-persona 的所有重要变更，格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## 0.3.0 - 2026-10-03
+
+**新增：人设正文可以在界面上直接改。** 输入栏那颗胶囊保持不变（仍是一颗按钮，零多余控件），编辑入口放在**设置 →「鲸鱼人设」**一页里。
+
+### 新增
+
+- 设置页「鲸鱼人设」（`settings.section` 插槽）：一个全宽文本框 + 保存 / 恢复默认，带字数统计、未保存提示、保存中与失败提示；只读部署下会明确说明无法保存。
+- 插件配置新增 volatile 字段 `persona`，默认值就是内置人设正文。**清空文本框与点「恢复默认」等价**——都写 `unset` 让 schema 默认值生效，profile 补丁里不留空串；手改 `cordis.patch.yml` 把 `persona` 写成空串同样回到默认。
+- 客户端文案走 locale 字典（`zh` / `en` 两套，键集一致），插槽注册时声明 `locale`，跟随 Harness 语言设置切换。
+- `lib/index.mjs` 导出 `DEFAULT_PERSONA`，README 的「默认人设」段与它逐字一致（有校验脚本守着）。
+
+### 变更
+
+- **人设正文改为纯文本**：提示词段注册时带 `interpolate: false`，注入时不做变量插值；文本改用函数形式提供，每次组装读当前引用。`enabled` 的语义不变。
+- **默认人设去掉 `{{model}}` / `{{cwd}}`**：这两条信息 Harness 自己就会注入（部署层的 `system-prompt.personaPrefix/personaSuffix` 与各 preset 的 `dsh-persona`），人设里重复是多余的，而且会把提示词变量这种内部细节暴露给要改人设的人。改后语义完全一致，只是那句变成「你依然是功能完整的编码代理」。
+- **关闭自动生成的插件配置表单**（`settings.configure({ auto: false })`）：Harness 客户端 primitives 没有 Textarea 组件，自动表单对长文本只能用单行输入框，不适合编辑人设；改由本插件自己的设置页负责。
+- `dsh.client.inject` 增加 `@deepseek-ai/dsh-client-locale` 与 `@deepseek-ai/dsh-client-ui-settings-general`。
+- README：「人设原文」改为「默认人设」并说明它只是默认值；新增「改人设」一节；结构表与说明同步。
+
+### 修复
+
+- **彻底消除提示词变量写坏会话的风险**：提示词插值是严格的，未知的 `{{...}}` 会让系统提示词组装抛错，而那是整个 profile 所有会话都发不出请求的级别。人设既然由用户自由编辑，就不该走插值——现在用户随手写下的任何花括号都只会原样出现。（`verify/interpolation-hazard.test.mjs` 复现了原风险并验证了修法。）
+
 ## 0.2.0 - 2026-10-03
 
 **适配 DeepSeek Harness 0.2.0-rc.2。** 这是一次破坏性升级：0.1.0 依赖的 `settings` 命名空间 API 与 `settingsScope` 传输在新版 DSH 中已被移除，旧版插件在新版 Harness 上**无法加载**（插件 `apply()` 会在 `ctx.settings.register` 处直接抛错）。
